@@ -1,7 +1,37 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+  background-color: #A8C6E2;
+
+  font-family: fantasy;
+  
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
+#tomato{
+  width: 175px;
+  height: 170px;
+
+  background-image: url('/Users/menagdd/Desktop/pomodorotimer/thetomato.png');
+
+  background-size: cover;
+
+  background-repeat: no-repeat;
+
+}
+
+#startBtn{
+  width:120px;
+
+  height: 40px;
+
+  background-color: #5287CC;
+
+  border: none;
+
+  border-radius: 8px;
+}
+
+#startBtn:hover{
+  background-color: #3f689e;
 }
