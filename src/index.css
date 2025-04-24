@@ -3,26 +3,33 @@ body {
 
   font-family: fantasy;
 
+  display: flex;
+
   flex-wrap: wrap;
 
   justify-content: center;
 }
 
-h1{
-  padding-left: 40px;
-  padding-right: 25px;
+#tomatoholder{
+  width: 175px;
+  height: 170px;
+
+}
+
+#space{
+  height:5px;
+  width:100%;
 }
 
 #tomato{
   width: 175px;
   height: 170px;
+}
 
-  background-image: url('/Users/menagdd/Desktop/pomodorotimer/thetomato.png');
+#timer{
+  font-size: 25px;
 
-  background-size: cover;
-
-  background-repeat: no-repeat;
-
+  line-height: 0;
 }
 
 #startBtn{
@@ -38,5 +45,23 @@ h1{
 }
 
 #startBtn:hover{
+  background-color: #3f689e;
+}
+
+#stopBtn{
+  width:120px;
+
+  height: 40px;
+
+  background-color: #5287CC;
+
+  border: none;
+
+  border-radius: 8px;
+
+  visibility: hidden;
+}
+
+#stopBtn:hover{
   background-color: #3f689e;
 }

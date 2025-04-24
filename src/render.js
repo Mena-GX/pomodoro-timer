@@ -1,6 +1,19 @@
 const stBtn = document.getElementById('startBtn');
+const stopBtn = document.getElementById('stopBtn');
 
 stBtn.onclick = clickStart;
+
+stopBtn.onclick = clickStop;
+
+function clickStop(){
+    //store timeLeft
+
+    //stop current function
+
+    //display start btn
+
+    //countdown func again with new time
+}
 
 function clickStart(){
 
@@ -13,13 +26,18 @@ function clickStart(){
 
 function countdown(endTime, display){
     const intervalID = setInterval(function() {
-        // display.style.visibility = "visible";
         const now = new Date().getTime();
         const timeLeft =  endTime - now;
 
         //hide start button
 
+        stBtn.style.visibility = 'hidden';
+
         //display stop button
+
+        stopBtn.style.visibility = 'visible';
+
+        const stopBtn = document.getElementById('stopBtn');
 
         if(timeLeft <= 0){
             clearInterval(intervalID);
