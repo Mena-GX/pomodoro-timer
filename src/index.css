@@ -13,7 +13,6 @@ body {
 #tomatoholder{
   width: 175px;
   height: 170px;
-
 }
 
 #space{
@@ -49,9 +48,9 @@ body {
 }
 
 #stopBtn{
-  width:120px;
+  width:0px;
 
-  height: 40px;
+  height:0px;
 
   background-color: #5287CC;
 

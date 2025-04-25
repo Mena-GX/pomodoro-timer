@@ -1,18 +1,45 @@
 const stBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
 
+let timeFinish = 0;
+let stop = 0;
+let intervalID;
+
 stBtn.onclick = clickStart;
 
 stopBtn.onclick = clickStop;
 
 function clickStop(){
-    //store timeLeft
 
     //stop current function
 
-    //display start btn
+    stop = 1;
 
-    //countdown func again with new time
+    //hide stop button
+
+    stopBtn.style.height = '0px';
+    stopBtn.style.width = '0px';
+    stopBtn.style.visibility = 'hidden';
+
+    //display start btn
+    
+    stBtn.style.height = '40px';
+    stBtn.style.width = '120px';
+    stBtn.style.visibility = 'visible';
+
+    //change start button function to startAgain
+
+    stBtn.onclick = startAgain;
+}
+
+function startAgain(){
+    stop = 0; 
+
+    const timerText = document.getElementById('timer');
+
+    const targetTime = new Date().getTime() + timeFinish;
+
+    countdown(targetTime, timerText);
 }
 
 function clickStart(){
@@ -25,31 +52,42 @@ function clickStart(){
 }
 
 function countdown(endTime, display){
-    const intervalID = setInterval(function() {
+    var intervalID = setInterval(function() {
         const now = new Date().getTime();
-        const timeLeft =  endTime - now;
+        timeFinish =  endTime - now;
 
         //hide start button
 
         stBtn.style.visibility = 'hidden';
+        stBtn.style.width = '0px';
+        stBtn.style.height = '0px';
+        console.log("hi");
 
         //display stop button
 
+        stopBtn.style.width = '120px';
+        stopBtn.style.height = '40px';
         stopBtn.style.visibility = 'visible';
 
-        const stopBtn = document.getElementById('stopBtn');
 
-        if(timeLeft <= 0){
+        if(timeFinish <= 0){
             clearInterval(intervalID);
 
             display.textContent = "TIMES UP!";
+
+            //display the times up div
             return;
             
-            //display the times up div
         }
 
-        const mins = Math.floor((timeLeft % (1000 * 60 * 60 )) / (1000 * 60));
-        const secs = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        if(stop == 1){
+            clearInterval(intervalID);
+
+            return;
+        }
+
+        const mins = Math.floor((timeFinish % (1000 * 60 * 60 )) / (1000 * 60));
+        const secs = Math.floor((timeFinish % (1000 * 60)) / 1000);
 
         display.textContent = `${mins}:${secs}`;
     }, 1000);
