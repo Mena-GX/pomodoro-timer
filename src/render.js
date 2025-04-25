@@ -1,8 +1,9 @@
 const stBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
+const tomato = document.getElementById('tomato');
 
 let timeFinish = 0;
-let stop = 0;
+let check = 0;
 let intervalID;
 
 stBtn.onclick = clickStart;
@@ -13,7 +14,7 @@ function clickStop(){
 
     //stop current function
 
-    stop = 1;
+    check = 1;
 
     //hide stop button
 
@@ -27,13 +28,15 @@ function clickStop(){
     stBtn.style.width = '120px';
     stBtn.style.visibility = 'visible';
 
+    tomato.src = "/Users/menagdd/Desktop/pomodorotimer/idle_Tomato.gif";
+
     //change start button function to startAgain
 
     stBtn.onclick = startAgain;
 }
 
 function startAgain(){
-    stop = 0; 
+    check = 0; 
 
     const timerText = document.getElementById('timer');
 
@@ -53,6 +56,12 @@ function clickStart(){
 
 function countdown(endTime, display){
     var intervalID = setInterval(function() {
+        if(check == 1){
+            clearInterval(intervalID);
+
+            return;
+        }
+
         const now = new Date().getTime();
         timeFinish =  endTime - now;
 
@@ -61,13 +70,14 @@ function countdown(endTime, display){
         stBtn.style.visibility = 'hidden';
         stBtn.style.width = '0px';
         stBtn.style.height = '0px';
-        console.log("hi");
 
         //display stop button
 
         stopBtn.style.width = '120px';
         stopBtn.style.height = '40px';
         stopBtn.style.visibility = 'visible';
+
+        tomato.src = "/Users/menagdd/Desktop/pomodorotimer/Tomato_GIF.gif";
 
 
         if(timeFinish <= 0){
@@ -80,11 +90,7 @@ function countdown(endTime, display){
             
         }
 
-        if(stop == 1){
-            clearInterval(intervalID);
-
-            return;
-        }
+        
 
         const mins = Math.floor((timeFinish % (1000 * 60 * 60 )) / (1000 * 60));
         const secs = Math.floor((timeFinish % (1000 * 60)) / 1000);
