@@ -10,6 +10,22 @@ body {
   justify-content: center;
 }
 
+#settings{
+  position:absolute;
+  top: 10px;
+  right: 10px;
+
+  height: 25px;
+  width: 25px;
+
+  cursor: pointer;
+}
+
+#gear{
+  height: 25px;
+  width: 25px;
+}
+
 h1{
   font-family: "Tiny5", sans-serif;
   font-weight: 400;

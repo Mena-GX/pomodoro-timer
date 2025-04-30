@@ -6,9 +6,31 @@ let timeFinish = 0;
 let check = 0;
 let intervalID;
 
+let counter = 4; //standard amount of intervals
+
+let length = 1500000; //standard amount of time - 25 minutes
+
+let breakLngth = 300000; //standard amount of time for breaks - 5 minutes
+
 stBtn.onclick = clickStart;
 
 stopBtn.onclick = clickStop;
+
+
+//change the length of the work time
+function changeLength(){
+
+}
+
+//change the length of the break time
+function changeBreak(){
+
+}
+
+//change the amount of interations
+function changeCounter(){
+
+}
 
 function clickStop(){
 
@@ -49,9 +71,21 @@ function clickStart(){
 
     const timerText = document.getElementById('timer');
 
-    const targetTime = new Date().getTime() + 60000;
+    const targetTime = new Date().getTime() + length;
 
     countdown(targetTime, timerText);
+
+    //4 intervals
+
+    //loop for 4 intervals
+        //start first round
+        //finish first round
+        //start break
+        //finish break
+        //increment count
+        //loop
+    
+    //once 4 
 }
 
 function countdown(endTime, display){
