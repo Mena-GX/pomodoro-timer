@@ -10,6 +10,12 @@ body {
   justify-content: center;
 }
 
+h1{
+  font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 #tomatoholder{
   width: 175px;
   height: 170px;
@@ -41,6 +47,10 @@ body {
   border: none;
 
   border-radius: 8px;
+
+  font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #startBtn:hover{
@@ -59,6 +69,10 @@ body {
   border-radius: 8px;
 
   visibility: hidden;
+
+  font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #stopBtn:hover{
