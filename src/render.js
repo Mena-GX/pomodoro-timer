@@ -1,6 +1,7 @@
 const stBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
 const tomato = document.getElementById('tomato');
+const settingsBtn = document.getElementById('settings');
 
 let timeFinish = 0;
 let check = 0;
@@ -15,6 +16,12 @@ let breakLngth = 300000; //standard amount of time for breaks - 5 minutes
 stBtn.onclick = clickStart;
 
 stopBtn.onclick = clickStop;
+
+settingsBtn.onclick = openSettings;
+
+function openSettings(){
+    
+}
 
 
 //change the length of the work time
