@@ -2,6 +2,8 @@ const stBtn = document.getElementById('startBtn');
 const stopBtn = document.getElementById('stopBtn');
 const tomato = document.getElementById('tomato');
 const settingsBtn = document.getElementById('settings');
+const closeBtn = document.getElementById('close');
+const settingsNav = document.getElementById('settingsBar');
 
 let timeFinish = 0;
 let check = 0;
@@ -18,9 +20,18 @@ stBtn.onclick = clickStart;
 stopBtn.onclick = clickStop;
 
 settingsBtn.onclick = openSettings;
+closeBtn.onclick = closeSettings;
+
+function closeSettings(){
+    settingsNav.style.width = '0px';
+    settingsNav.style.height = '0px';
+    settingsNav.style.visibility = 'hidden';
+}
 
 function openSettings(){
-    
+    settingsNav.style.width = '240px';
+    settingsNav.style.height = '270px';
+    settingsNav.style.visibility = 'visible';
 }
 
 
