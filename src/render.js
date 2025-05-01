@@ -48,6 +48,10 @@ function closeSettings(){
     settingsNav.style.width = '0px';
     settingsNav.style.height = '0px';
     settingsNav.style.visibility = 'hidden';
+
+    roundInput.value = counter;
+    lengthInput.value = length / 60000;
+    breakInput.value = breakLngth / 60000;
 }
 
 function openSettings(){
