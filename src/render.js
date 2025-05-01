@@ -4,6 +4,10 @@ const tomato = document.getElementById('tomato');
 const settingsBtn = document.getElementById('settings');
 const closeBtn = document.getElementById('close');
 const settingsNav = document.getElementById('settingsBar');
+const saveBtn = document.getElementById('saveBtn');
+const roundInput = document.getElementById('interval');
+const lengthInput = document.getElementById('runTime');
+const breakInput = document.getElementById('breakTime');
 
 let timeFinish = 0;
 let check = 0;
@@ -21,6 +25,24 @@ stopBtn.onclick = clickStop;
 
 settingsBtn.onclick = openSettings;
 closeBtn.onclick = closeSettings;
+
+saveBtn.onclick = saveSettings;
+
+//this actually changes the standards
+//closing out of the setting's will look like it saved
+//when it hasn't
+function saveSettings(){
+    //store the new values
+    var x = roundInput.value;
+    var y = lengthInput.value;
+    var z = breakInput.value;
+
+    //change the standards to the new values
+    //lengths are in terms of milliseconds
+    counter = x;
+    length = y * 60000;
+    breakLngth = z * 60000;
+}
 
 function closeSettings(){
     settingsNav.style.width = '0px';
