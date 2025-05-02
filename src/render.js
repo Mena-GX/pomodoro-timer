@@ -14,12 +14,15 @@ const startBrk = document.getElementById('startBreak');
 let timeFinish = 0;
 let check = 0;
 let intervalID;
+let breakOrNot = false;
 
 let counter = 4; //standard amount of intervals
 
 let length = 1500000; //standard amount of time - 25 minutes
 
 let breakLngth = 300000; //standard amount of time for breaks - 5 minutes
+
+let currentRound = 0;
 
 stBtn.onclick = clickStart;
 
@@ -33,12 +36,22 @@ saveBtn.onclick = saveSettings;
 startBrk.onclick = startBreak;
 
 function startBreak(){
+    breakOrNot = true;
 
+    //hides the break screen
+    breakNav.style.width = '0px';
+    breakNav.style.height = '0px';
+    breakNav.style.visibility = 'hidden';
+
+    const timerText = document.getElementById('timer');
+
+    const targetTime = new Date().getTime() + breakLngth;
+
+    //starts the break
+    countdown(targetTime, timerText);
 }
 
-//this actually changes the standards
-//closing out of the setting's will look like it saved
-//when it hasn't
+//this saves the settings and changes the standards
 function saveSettings(){
     //store the new values
     var x = roundInput.value;
@@ -52,6 +65,7 @@ function saveSettings(){
     breakLngth = z * 60000;
 }
 
+//does not save settings when closed
 function closeSettings(){
     settingsNav.style.width = '0px';
     settingsNav.style.height = '0px';
@@ -105,26 +119,26 @@ function startAgain(){
 
 function clickStart(){
 
-    const timerText = document.getElementById('timer');
+    //if there are still rounds left
+    //do another round
+    if(currentRound < counter){
+        if(breakNav.style.visibility = 'visible'){
+            breakNav.style.width = '0px';
+            breakNav.style.height = '0px';
+            breakNav.style.visibility = 'hidden';
+            startBrk.onclick = startBreak;
+        }
 
-    const targetTime = new Date().getTime() + length;
+        const timerText = document.getElementById('timer');
 
-    countdown(targetTime, timerText);
+        const targetTime = new Date().getTime() + length;
 
-    //4 intervals
+        countdown(targetTime, timerText);
 
-    for(let i = 0; i < counter; i++){
-        countdown(targetTime, timerText); //starts first round
+    //else go back to starting screen
     }
-    //loop for 4 intervals
-        //start first round
-        //finish first round
-        //start break
-        //finish break
-        //increment count
-        //loop
-    
-    //once 4 intervals done revert back to starting screen
+
+    return;
 }
 
 function countdown(endTime, display){
@@ -152,20 +166,72 @@ function countdown(endTime, display){
 
         tomato.src = "/Users/menagdd/Desktop/pomodorotimer/Tomato_GIF.gif";
 
-
         if(timeFinish <= 0){
-            clearInterval(intervalID);
 
-            breakNav.style.width = '235px';
-            breakNav.style.width = '200px';
-            breakNav.style.visibility = 'visible';
+            //finish a round that is a break
+            if(breakOrNot === true){
+                if(currentRound == counter - 1){
+                    clearInterval(intervalID);
+                    startBrk.style.height = '0px';
+                    startBrk.style.width = '0px';
+                    startBrk.style.visibility = 'hidden';
+                    breakNav.style.width = '235px';
+                    breakNav.style.height = '200px';
+                    breakNav.style.visibility = 'visible';
+                    document.getElementById('textBreak').innerHTML = "All Done!" 
 
-            //display the times up div
-            return;
+                    setTimeout(function() {
+                        // Code to be executed after the delay
+
+                        breakNav.style.width = '235px';
+                        breakNav.style.height = '200px';
+                        breakNav.style.visibility = 'hidden';
+                        startBrk.onclick = startBreak;
+
+                        tomato.src = "/Users/menagdd/Desktop/pomodorotimer/thetomato.png";
+                        display.textContent = ``;
+                        
+                        stopBtn.style.height = '0px';
+                        stopBtn.style.width = '0px';
+                        stopBtn.style.visibility = 'hidden';
+
+                        stBtn.style.height = '40px';
+                        stBtn.style.width = '120px';
+                        stBtn.style.visibility = 'visible';
+                      }, 2000); // 2000 milliseconds = 2 seconds
+
+                      currentRound = 0;
+                }else{
+                    clearInterval(intervalID);
+            
+                    //displays the break's over screen
+                    breakNav.style.width = '235px';
+                    breakNav.style.height = '200px';
+                    breakNav.style.visibility = 'visible';
+                    document.getElementById('textBreak').innerHTML = "Break's Over!" 
+
+                    breakOrNot = false;
+
+                    currentRound++;
+                    
+                    startBrk.onclick = clickStart;
+
+                    return;
+                }
+
+            //finish a round that is not a break
+            } else{
+                clearInterval(intervalID);
+
+                breakNav.style.width = '235px';
+                breakNav.style.height = '200px';
+                breakNav.style.visibility = 'visible';
+                document.getElementById('textBreak').innerHTML = "Break Time!" 
+
+                return;
+            }
             
         }
-
-        
 
         const mins = Math.floor((timeFinish % (1000 * 60 * 60 )) / (1000 * 60));
         const secs = Math.floor((timeFinish % (1000 * 60)) / 1000);
