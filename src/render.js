@@ -8,6 +8,8 @@ const saveBtn = document.getElementById('saveBtn');
 const roundInput = document.getElementById('interval');
 const lengthInput = document.getElementById('runTime');
 const breakInput = document.getElementById('breakTime');
+const breakNav = document.getElementById('timesUp');
+const startBrk = document.getElementById('startBreak');
 
 let timeFinish = 0;
 let check = 0;
@@ -27,6 +29,12 @@ settingsBtn.onclick = openSettings;
 closeBtn.onclick = closeSettings;
 
 saveBtn.onclick = saveSettings;
+
+startBrk.onclick = startBreak;
+
+function startBreak(){
+
+}
 
 //this actually changes the standards
 //closing out of the setting's will look like it saved
@@ -58,22 +66,6 @@ function openSettings(){
     settingsNav.style.width = '240px';
     settingsNav.style.height = '270px';
     settingsNav.style.visibility = 'visible';
-}
-
-
-//change the length of the work time
-function changeLength(){
-
-}
-
-//change the length of the break time
-function changeBreak(){
-
-}
-
-//change the amount of interations
-function changeCounter(){
-
 }
 
 function clickStop(){
@@ -121,6 +113,9 @@ function clickStart(){
 
     //4 intervals
 
+    for(let i = 0; i < counter; i++){
+        countdown(targetTime, timerText); //starts first round
+    }
     //loop for 4 intervals
         //start first round
         //finish first round
@@ -129,7 +124,7 @@ function clickStart(){
         //increment count
         //loop
     
-    //once 4 
+    //once 4 intervals done revert back to starting screen
 }
 
 function countdown(endTime, display){
@@ -161,7 +156,9 @@ function countdown(endTime, display){
         if(timeFinish <= 0){
             clearInterval(intervalID);
 
-            display.textContent = "TIMES UP!";
+            breakNav.style.width = '235px';
+            breakNav.style.width = '200px';
+            breakNav.style.visibility = 'visible';
 
             //display the times up div
             return;

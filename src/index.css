@@ -224,3 +224,45 @@ h1{
 #stopBtn:hover{
   background-color: #3f689e;
 }
+
+#timesUp{
+  visibility: hidden;
+
+  width: 0px; /* Will be 235px once open */
+  height: 0px; /* Will be 200px once open */
+
+  background-color: rgb(85, 157, 209, .92);
+  border-radius: 20px;
+
+  position: absolute;
+
+  top: 85px;
+  left: 45px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+#startBreak{
+  background-color: #2865B4;
+  border: none;
+  border-radius: 10px;
+
+  width: 120px;
+  height: 40px;
+
+  font-family: "Tiny5", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#textBreak{
+  padding-top: 45px;
+}
+
+#startBreak:hover{
+  background-color: #1b4e92;
+}
