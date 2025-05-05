@@ -18,9 +18,9 @@ let breakOrNot = false;
 
 let counter = 4; //standard amount of intervals
 
-let length = 10000;//1500000; //standard amount of time - 25 minutes
+let length = 1500000; //standard amount of time - 25 minutes
 
-let breakLngth = 10000;//300000; //standard amount of time for breaks - 5 minutes
+let breakLngth = 300000; //standard amount of time for breaks - 5 minutes
 
 let currentRound = 0;
 
