@@ -11,8 +11,9 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 315,
     height: 400,
-    icon: "assets/tomatoicon.icns",
+    icon: __dirname + 'assets/tomatoicon.icns',
     webPreferences: {
+      nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
     },
   });
@@ -20,8 +21,6 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
