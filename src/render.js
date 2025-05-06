@@ -100,7 +100,7 @@ function clickStop(){
     stBtn.style.width = '120px';
     stBtn.style.visibility = 'visible';
 
-    tomato.src = "/Users/menagdd/Desktop/pomodorotimer/idle_Tomato.gif";
+    tomato.src = "pomodoro-timer/assets/idle_Tomato.gif";
 
     //change start button function to startAgain
 
@@ -164,7 +164,7 @@ function countdown(endTime, display){
         stopBtn.style.height = '40px';
         stopBtn.style.visibility = 'visible';
 
-        tomato.src = "/Users/menagdd/Desktop/pomodorotimer/Tomato_GIF.gif";
+        tomato.src = "pomodoro-timer/assets/Tomato_GIF.gif";
 
         if(timeFinish <= 0){
 
@@ -188,7 +188,7 @@ function countdown(endTime, display){
                         breakNav.style.visibility = 'hidden';
                         startBrk.onclick = startBreak;
 
-                        tomato.src = "/Users/menagdd/Desktop/pomodorotimer/thetomato.png";
+                        tomato.src = "pomodoro-timer/assets/thetomato.png";
                         display.textContent = ``;
                         
                         stopBtn.style.height = '0px';
