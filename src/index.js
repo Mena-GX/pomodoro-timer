@@ -11,6 +11,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 315,
     height: 400,
+    icon: "assets/tomatoicon.icns",
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
